@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lite Bite | Contact</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/styles/contact.css">
+  </head>
+  <body>
+
+    <!-- Navbar di kiri -->
+    <div class="d-flex justify-content-between align-items-center px-3">
+      <!-- Brand di kiri -->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            style="font-family: 'cooper black', cursive; color: #2B321B;">
+            <img src="assets/images/logo1.png" alt="Logo" width="50" height="50"
+              class="d-inline-block align-text-center">
+            Lite Bite
+          </a>
+        </div>
+      </nav>
+      <!-- Navigasi tab di kanan -->
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-home-tab" href="index.html" role="tab"
+            aria-selected="false">Home</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-menu-tab" href="menu.html" role="tab"
+            aria-selected="false">Menu</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-order-tab" href="order.html"
+            role="tab" aria-selected="false">Order</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-location-tab" href="location.html"
+            role="tab" aria-selected="false">Location</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-contact-tab" href="#" role="tab"
+            aria-selected="false">Contact</a>
+        </li>
+        <li class="nav-item" role="presentation">
+          <a class="nav-link" id="pills-aboutus-tab" href="aboutus.html"
+            role="tab" aria-selected="false">About Us</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="form-bg"
+      style="background-image: url('assets/images/bg2.jpg'); background-size: cover; background-position: center;">
+      <div class="overlay"></div>
+      <div class="container py-5 content-wrapper">
+        <h2 class="contact-title-wrapper text-center mb-4">Contact Us</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-6 form-section">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="subject"
+                  required />
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="4"
+                  required></textarea>
+              </div>
+              <button type="submit"
+                class="btn btn-order w-100">Submit</button>
+            </form>
+
+            <div id="contactResponse" class="alert alert-success mt-4 d-none"
+              role="alert">
+              Your message has been sent successfully. Thank you for
+              contacting us!Your message has been sent successfully. Thank you
+              for contacting us!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tulisan Berjalan Horizontal -->
+    <div class="top-marquee">
+      <div class="marquee-content">
+        Nourish your body, delight your taste buds – healthy eating
+        reimagined for modern lifestyles. Order now!
+      </div>
+    </div>
+
+    <!-- Contact & Order Section -->
+    <div class="container-fluid py-5" style="background-color: #CCD5AE;">
+      <div
+        class="container d-flex flex-wrap justify-content-between align-items-center">
+
+        <!-- Logo & Nama Brand -->
+        <div class="mb-4 mb-md-0 text-center text-md-start">
+          <img src="assets/images/logo3.png" alt="Lite Bite Logo"
+            style="height: 200px; align-items: center;">
+          <h3
+            style="color: #2B321B; font-family: 'Cooper Black', cursive;"></h3>
+        </div>
+
+        <!-- Kontak -->
+        <div class="text-center text-md-start mb-4 mb-md-0">
+          <h5 class="fw-bold" style="color: #2B321B;">CONNECT WITH US</h5>
+          <p class="mb-1"><i class="bi bi-instagram"></i> Lite_Bite.id</p>
+          <p class="mb-1"><i class="bi bi-whatsapp"></i> 0812-78994-5299
+            (Customer Care)</p>
+          <p class="mb-0"><i class="bi bi-envelope"></i>
+            green@litebite.id</p>
+        </div>
+
+        <!-- Order Online -->
+        <div class="text-center text-md-start">
+          <h5 class="fw-bold" style="color: #2B321B;">ORDER ONLINE</h5>
+          <div
+            class="d-flex justify-content-center justify-content-md-start gap-3 mt-2">
+            <img src="assets/images/grabfood.png" alt="GrabFood"
+              style="height: 30px;">
+            <img src="assets/images/gofood.png" alt="GoFood"
+              style="height: 30px;">
+            <img src="assets/images/shopeefood.png" alt="ShopeeFood"
+              style="height: 30px;">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- JS untuk handling form -->
+      <script>
+    const form = document.getElementById("contactForm");
+    const response = document.getElementById("contactResponse");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Tambahkan AJAX jika ingin kirim ke server
+      response.classList.remove("d-none");
+      form.reset();
+    });
+  </script>
+    </body>
+  </html>
