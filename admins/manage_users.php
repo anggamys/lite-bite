@@ -63,7 +63,7 @@ $users = $mysqli->query("SELECT * FROM users ORDER BY created_at DESC");
                                 <thead class="thead-light">
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
+                                        <th>Username</th>
                                         <th>Email</th>
                                         <th>Registered At</th>
                                         <th style="width: 120px;">Actions</th>
@@ -75,7 +75,7 @@ $users = $mysqli->query("SELECT * FROM users ORDER BY created_at DESC");
                                         while ($user = $users->fetch_assoc()): ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
-                                                <td><?= htmlspecialchars($user['name']) ?></td>
+                                                <td><?= htmlspecialchars($user['username']) ?></td>
                                                 <td><?= htmlspecialchars($user['email']) ?></td>
                                                 <td><?= date('d M Y H:i', strtotime($user['created_at'])) ?></td>
                                                 <td>

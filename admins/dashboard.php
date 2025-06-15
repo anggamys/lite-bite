@@ -11,7 +11,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 // Dashboard metrics
 $totalProducts = $mysqli->query("SELECT COUNT(*) as count FROM menu_items")->fetch_assoc()['count'];
 $totalUsers = $mysqli->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'];
-$categories = $mysqli->query("SELECT COUNT(DISTINCT category) as count FROM menu_items")->fetch_assoc()['count'];
+$totalOrders = $mysqli->query("SELECT COUNT(*) as count FROM orders")->fetch_assoc()['count'];
 
 $pageTitle = 'Admin Dashboard';
 ?>
@@ -49,22 +49,23 @@ $pageTitle = 'Admin Dashboard';
 
                     <!-- Dashboard Stats -->
                     <div class="row">
+
+                        <div class="col-md-4 col-sm-6 col-12">
+                            <div class="info-box bg-primary">
+                                <span class="info-box-icon"><i class="fas fa-chart-line"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Total Orders</span>
+                                    <span class="info-box-number"><?= $totalOrders ?></span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-4 col-sm-6 col-12">
                             <div class="info-box bg-info">
                                 <span class="info-box-icon"><i class="fas fa-hamburger"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Total Products</span>
                                     <span class="info-box-number"><?= $totalProducts ?></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-12">
-                            <div class="info-box bg-success">
-                                <span class="info-box-icon"><i class="fas fa-th-large"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Product Categories</span>
-                                    <span class="info-box-number"><?= $categories ?></span>
                                 </div>
                             </div>
                         </div>

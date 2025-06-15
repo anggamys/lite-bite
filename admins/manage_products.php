@@ -41,7 +41,7 @@ $items = $mysqli->query("SELECT * FROM menu_items ORDER BY id DESC");
             <!-- Header -->
             <section class="content-header d-flex justify-content-between align-items-center mb-3">
                 <h1></h1>
-                <a href="add_product.php" class="btn btn-success">
+                <a href="add_edit_product.php" class="btn btn-success">
                     <i class="fas fa-plus-circle mr-1"></i> Add Product
                 </a>
             </section>
