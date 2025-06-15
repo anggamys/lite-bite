@@ -1,14 +1,14 @@
 /* ========== Root & Globals ========== */
 :root {
-  --litebite-primary: #2B321B;
-  --litebite-accent: #CCD5AE;
+  --litebite-primary: #2b321b;
+  --litebite-accent: #ccd5ae;
   --litebite-font: 'Cooper Black', cursive;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #fefdf7;
-  color: #2B321B;
+  color: var(--litebite-primary);
 }
 
 /* ========== Typography ========== */
@@ -19,8 +19,8 @@ h2.section-title {
   color: var(--litebite-primary);
 }
 
-.main-text,
-.section-title h3 {
+.section-title h3,
+.main-text {
   font-family: var(--litebite-font);
   font-size: 2rem;
   font-weight: 600;
@@ -42,8 +42,7 @@ h2.section-title {
 
 .video-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -56,7 +55,7 @@ h2.section-title {
   z-index: 1;
   padding: 4rem 2rem;
   text-align: center;
-  color: white;
+  color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
@@ -78,10 +77,10 @@ h2.section-title {
   min-width: 340px;
   border: none;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
   background-color: #fff;
   flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
@@ -96,13 +95,13 @@ h2.section-title {
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--litebite-primary);
 }
 
 .card-text {
   font-size: 0.95rem;
-  color: #555;
+  color: #4f4f4f;
   max-height: 60px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,21 +111,31 @@ h2.section-title {
 .btn-custom,
 .btn-order {
   background-color: var(--litebite-primary);
-  color: white;
+  color: #fff;
   padding: 10px 28px;
+  border: none;
   border-radius: 50px;
   font-weight: 500;
-  border: none;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-custom:hover,
 .btn-order:hover {
-  background-color: #6B774C;
+  background-color: #6b774c;
   transform: scale(1.05);
 }
 
-/* ========== Location ========== */
+/* ========== Location Section ========== */
+.location-section {
+  padding: 60px 0;
+}
+
+.location-section h3 {
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--litebite-primary);
+}
+
 .location-nav a {
   text-decoration: none;
   color: var(--litebite-primary);
@@ -135,7 +144,7 @@ h2.section-title {
 }
 
 .location-nav a:hover {
-  color: #6B774C;
+  color: #6b774c;
 }
 
 .location-card {
@@ -149,16 +158,6 @@ h2.section-title {
   transform: translateY(-5px);
 }
 
-.location-section {
-  padding: 60px 0;
-}
-
-.location-section h3 {
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: var(--litebite-primary);
-}
-
 .bi-telephone-fill {
   margin-right: 6px;
 }
@@ -166,11 +165,11 @@ h2.section-title {
 /* ========== Contact Form ========== */
 .form-bg {
   position: relative;
-  background-size: cover;
-  background-position: center;
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background-size: cover;
+  background-position: center;
 }
 
 .form-bg::before {
@@ -187,7 +186,7 @@ h2.section-title {
 }
 
 .contact-title-wrapper {
-  color: white;
+  color: #fff;
   font-weight: 600;
   font-size: 2.5rem;
 }
@@ -201,7 +200,7 @@ h2.section-title {
 
 /* ========== Contact Footer ========== */
 .contact-footer {
-  background-color: #CCD5AE;
+  background-color: var(--litebite-accent);
   color: var(--litebite-primary);
   padding: 3rem 1rem;
 }
@@ -221,7 +220,7 @@ h2.section-title {
 
 /* ========== Marquee ========== */
 .top-marquee {
-  background-color: #CCD5AE;
+  background-color: var(--litebite-accent);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -229,9 +228,9 @@ h2.section-title {
 .marquee-content {
   display: inline-block;
   padding: 1rem;
-  animation: scroll-left 15s linear infinite;
   color: var(--litebite-primary);
   font-weight: 500;
+  animation: scroll-left 15s linear infinite;
 }
 
 @keyframes scroll-left {
@@ -245,7 +244,7 @@ h2.section-title {
 
 /* ========== About Us ========== */
 .aboutus-section {
-  background-color: #FFFBE1;
+  background-color: #fffbe1;
   padding: 4rem 0;
 }
 
@@ -255,7 +254,7 @@ h2.section-title {
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1rem;
-  border: 4px solid #CCD5AE;
+  border: 4px solid var(--litebite-accent);
 }
 
 .icon-ourtim img {
@@ -279,13 +278,32 @@ h2.section-title {
   display: block;
 }
 
+/* ========== Animation & Effects ========== */
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* ========== Responsive ========== */
 @media (max-width: 768px) {
   .aboutus-section {
     text-align: center;
   }
+
   .contact-footer .text-center {
     text-align: left !important;
+  }
+
+  .main-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .main-sidebar.sidebar-open {
+    transform: translateX(0) !important;
   }
 }
 

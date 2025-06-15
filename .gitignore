@@ -1,3 +1,6 @@
-# File images
-uploads/
+# Environment files
+.env
+
+# Directory images
 0416.mp4
+uploads/

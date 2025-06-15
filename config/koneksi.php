@@ -1,20 +1,21 @@
 <?php
-// Database credentials
-$host     = '127.0.0.1'; // ✅ Fix: use IP instead of localhost
-$username = 'root';
-$password = 'C0del@b08';
-$database = 'db_eas_pemweb';
-$port     = 3306;
+require_once __DIR__ . '/load_env.php'; // adjust path as needed
+loadEnv(__DIR__ . '/../.env');
+
+// Fetch from env
+$host     = getenv('DB_HOST');
+$port     = getenv('DB_PORT');
+$database = getenv('DB_DATABASE');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
 
 // Create connection
-$mysqli = new mysqli($host, $username, $password, $database, $port);
+$mysqli = new mysqli($host, $username, $password, $database, (int)$port);
 
 // Check connection
 if ($mysqli->connect_error) {
   die("Connection failed: " . $mysqli->connect_error);
 }
 
-// Set charset
-if (!$mysqli->set_charset("utf8mb4")) {
-  die("Error loading charset utf8mb4: " . $mysqli->error);
-}
+// Optional charset setup
+$mysqli->set_charset("utf8mb4");

@@ -3,12 +3,13 @@ include 'config/koneksi.php';
 
 function renderMenuSection($mysqli, $categoryLabel, $categoryKey, $icon)
 {
-    echo "<div class='section-title d-flex align-items-center gap-2 mb-4 mt-5'>
-            <i class='bi bi-$icon fs-3 text-success'></i>
-            <h3 class='mb-0'>$categoryLabel</h3>
-          </div>";
-
-    echo "<div class='row g-4'>";
+    echo "
+    <div class='section-title d-flex align-items-center gap-2 mb-4 mt-5'>
+        <i class='bi bi-$icon fs-3 text-success'></i>
+        <h3 class='mb-0'>$categoryLabel</h3>
+    </div>
+    <div class='row g-4'>
+    ";
 
     $stmt = $mysqli->prepare("SELECT * FROM menu_items WHERE category = ?");
     $stmt->bind_param("s", $categoryKey);
@@ -18,17 +19,23 @@ function renderMenuSection($mysqli, $categoryLabel, $categoryKey, $icon)
     while ($item = $result->fetch_assoc()) {
         $productId = (int) $item['id'];
         echo "
-        <div class='col-lg-4 col-md-6'>
+        <div class='col-12 col-sm-6 col-lg-4'>
             <a href='product_detail.php?id=$productId' class='text-decoration-none text-dark'>
-                <div class='card h-100 shadow-sm border-0'>
-                    <img src='" . htmlspecialchars($item['image_url']) . "' class='card-img-top' alt='" . htmlspecialchars($item['name']) . "' style='object-fit: cover; height: 200px;'>
+                <div class='card h-100 shadow-sm border-0 hover-scale'>
+                    <div class='ratio ratio-4x3 bg-white d-flex align-items-center justify-content-center'>
+                        <img src='" . htmlspecialchars($item['image_url']) . "' 
+                            class='img-fluid p-2 object-fit-contain' 
+                            alt='" . htmlspecialchars($item['name']) . "'>
+                    </div>
                     <div class='card-body d-flex flex-column'>
                         <h5 class='card-title text-primary fw-semibold'>" . htmlspecialchars($item['name']) . "</h5>
                         <p class='card-text flex-grow-1'>" . nl2br(htmlspecialchars($item['description'])) . "</p>
                         <div class='text-muted small mb-2'>
                             Carb: {$item['carb']}g | Protein: {$item['protein']}g | Fat: {$item['fat']}g
                         </div>
-                        <div class='badge bg-success text-white px-3 py-2 align-self-start'>Calories: {$item['calories']}</div>
+                        <span class='badge bg-success text-white px-3 py-2 align-self-start'>
+                            Calories: {$item['calories']}
+                        </span>
                     </div>
                 </div>
             </a>
@@ -39,7 +46,6 @@ function renderMenuSection($mysqli, $categoryLabel, $categoryKey, $icon)
     $stmt->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,11 +59,10 @@ function renderMenuSection($mysqli, $categoryLabel, $categoryKey, $icon)
 </head>
 
 <body>
-
     <?php include 'components/navbar.php'; ?>
 
     <div class="container py-5">
-        <div class="main-text">
+        <div class="main-text text-center">
             Pure nourishment, crafted with care.<br>
             Fresh from nature, daily.
         </div>

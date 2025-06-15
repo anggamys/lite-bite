@@ -1,0 +1,29 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Force HTTPS (optional, comment out if not using SSL)
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Clean URLs (remove .php from URLs)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)$ $1.php [L]
+
+# Set default index file
+DirectoryIndex index.php
+
+# Enable Error Reporting for Debug (comment out in production)
+php_flag display_errors on
+php_value error_reporting 32767
+
+# Custom Error Documents (optional)
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+
+# Increase memory & upload limits (adjust as needed)
+php_value upload_max_filesize 16M
+php_value post_max_size 20M
+php_value memory_limit 128M
+php_value max_execution_time 300
+php_value max_input_time 300

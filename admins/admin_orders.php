@@ -2,13 +2,13 @@
 session_start();
 include '../config/koneksi.php';
 
-// Optional: Admin access check
+// Ensure only admin can access
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header('Location: ../login.php');
     exit;
 }
 
-// Fetch orders with product info
+// Fetch order data
 $orders = $mysqli->query("
     SELECT o.*, m.name AS product_name 
     FROM orders o 
@@ -16,19 +16,21 @@ $orders = $mysqli->query("
     ORDER BY o.created_at DESC
 ");
 
-$pageTitle = "View Orders";
+$pageTitle = "Manage Orders";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Admin - View Orders | Lite Bite</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><?= $pageTitle ?> | Admin</title>
+
+    <!-- AdminLTE + Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -38,16 +40,20 @@ $pageTitle = "View Orders";
         <?php include '../components/navbarAdmin.php'; ?>
         <?php include '../components/aside.php'; ?>
 
+        <!-- Main Content -->
         <div class="content-wrapper p-4">
+            <section class="content-header d-flex justify-content-between align-items-center mb-3">
+                <!-- <h1 class="mb-0"><?= $pageTitle ?></h1> -->
+            </section>
 
             <section class="content">
-                <div class="container-fluid">
-                    <?php if ($orders->num_rows > 0): ?>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                <div class="card card-outline card-primary">
+                    <div class="card-body table-responsive p-0">
+                        <?php if ($orders->num_rows > 0): ?>
+                            <table class="table table-hover text-nowrap table-striped table-bordered mb-0">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>#</th>
+                                        <th style="width: 50px;">#</th>
                                         <th>Product</th>
                                         <th>Customer</th>
                                         <th>Phone</th>
@@ -64,21 +70,22 @@ $pageTitle = "View Orders";
                                             <td><?= htmlspecialchars($order['customer_name']) ?></td>
                                             <td><?= htmlspecialchars($order['phone']) ?></td>
                                             <td><?= $order['quantity'] ?></td>
-                                            <td><?= nl2br(htmlspecialchars($order['notes'])) ?></td>
+                                            <td><?= $order['notes'] ? nl2br(htmlspecialchars($order['notes'])) : '<em class="text-muted">-</em>' ?></td>
                                             <td><?= date('d M Y, H:i', strtotime($order['created_at'])) ?></td>
                                         </tr>
                                     <?php endwhile; ?>
                                 </tbody>
                             </table>
-                        </div>
-                    <?php else: ?>
-                        <div class="alert alert-info">No orders found.</div>
-                    <?php endif; ?>
+                        <?php else: ?>
+                            <div class="alert alert-info m-0 p-4">No orders have been placed yet.</div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </section>
         </div>
 
-        <footer class="main-footer text-center">
+        <!-- Footer -->
+        <footer class="main-footer text-sm text-center">
             <strong>&copy; <?= date('Y') ?> Lite Bite</strong> — Admin Panel
         </footer>
     </div>

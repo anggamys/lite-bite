@@ -37,8 +37,12 @@ $menu_items = $mysqli->query($query);
 
     <div class="scrolling-wrapper px-4">
       <?php while ($item = $menu_items->fetch_assoc()): ?>
-        <div class="card mx-2 mb-4" style="width: 18rem;">
-          <img src="<?= htmlspecialchars($item['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($item['name']) ?>" style="object-fit: cover; height: 200px;">
+        <div class="card mx-2 mb-4" style="width: 18rem; border: none; box-shadow: 0 6px 12px rgba(0,0,0,0.1);">
+          <div style="background-color: #fff; height: 200px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="<?= htmlspecialchars($item['image_url']) ?>"
+              alt="<?= htmlspecialchars($item['name']) ?>"
+              style="max-height: 100%; max-width: 100%; object-fit: contain;">
+          </div>
           <div class="card-body">
             <h5 class="card-title fw-bold"><?= htmlspecialchars($item['name']) ?></h5>
             <p class="card-text"><?= htmlspecialchars($item['description']) ?></p>
