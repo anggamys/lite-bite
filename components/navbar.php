@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg px-3">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="index.php">
-            <img src="assets/images/logo1.png" alt="Logo" width="50" height="50" class="me-2">
+            <img src="assets/images/logo-1.png" alt="Logo" width="50" height="50" class="me-2">
             Lite Bite
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"

@@ -19,12 +19,11 @@ $menu_items = $mysqli->query($query);
   <?php include 'components/navbar.php'; ?>
 
   <!-- Hero Banner -->
-  <section class="banner">
-    <video class="video-bg" autoplay muted loop playsinline>
-      <source src="https://drive.google.com/uc?id=1abn_0ZROAjNp5EgNmOMYPj2ja0SXksdZ" type="video/mp4" />
-    </video>
-    <div class="konten-banner">
-      <h1 class="fw-bold">Welcome to Lite Bite</h1>
+  <section class="hero-banner position-relative overflow-hidden">
+    <img src="assets/images/aboutus2.png" alt="Banner Image" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" style="z-index: 0; opacity: 0.65;" />
+
+    <div class="hero-content position-relative z-1 text-white text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 400px; padding: 2rem;">
+      <h1 class="fw-bold display-4">Welcome to Lite Bite</h1>
       <p class="lead">Where freshness meets flavor every day</p>
     </div>
   </section>
