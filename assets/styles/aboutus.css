@@ -1,0 +1,125 @@
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: #333333 !important;
+  background-color: #FFFBE1;
+  padding: 10px;
+}
+
+/* Atur warna teks dan background nav-pills */
+.nav-pills .nav-link {
+  color: #000000;
+  /* warna teks hitam */
+  background-color: #FFFBE1;
+  /* default background putih */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #2B321B;
+  /* warna hijau gelap untuk tombol aktif */
+  color: #FFFBE1;
+  /* teks putih biar kontras */
+}
+
+/* Hover effect optional */
+.nav-pills .nav-link:hover {
+  background-color: #2B321B;
+  /* lebih gelap sedikit saat hover */
+  color: #FFFBE1;
+}
+
+.main-color {
+  color: #2B321B !important;
+}
+
+/* Bannner CSS */
+.img-fit-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.banner {
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* Banner 2*/
+/* Desripsi */
+.about-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem; /* jarak antara gambar dan teks */
+  margin-top: 60px;
+  background-color: #fffef8;
+  font-family: 'Georgia', serif;
+  color: #2B321B;
+  padding: 2rem;
+  flex-wrap: wrap; /* agar responsif di layar kecil */
+}
+
+.about-section img {
+  max-height: 300px; /* ubah sesuai keinginan, misalnya 250px */
+  width: auto;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+
+.about-section .text {
+  flex: 1;
+  min-width: 250px;
+  text-align: justify; 
+}
+
+.mb-3 {
+  text-align: justify;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2B321B;
+}
+
+.about-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Tim Kami*/
+.icon-ourtim {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-ourtim i {
+  font-size: 40px;
+  color: #2B321B;
+}
+
+/* Banner 3 */
+.banner2 {
+  height: 40vh;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.img-banner-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* atau 'contain' jika ingin gambar tidak terpotong */
+  display: block;
+}

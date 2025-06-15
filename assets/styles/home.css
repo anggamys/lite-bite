@@ -1,0 +1,174 @@
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: #333333 !important;
+  background-color: #FFFBE1;
+  padding: 10px;
+}
+
+/* Atur warna teks dan background nav-pills */
+.nav-pills .nav-link {
+  color: #000000;
+  /* warna teks hitam */
+  background-color: #FFFBE1;
+  /* default background putih */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #2B321B;
+  /* warna hijau gelap untuk tombol aktif */
+  color: #FFFBE1;
+  /* teks putih biar kontras */
+}
+
+/* Hover effect optional */
+.nav-pills .nav-link:hover {
+  background-color: #2B321B;
+  /* lebih gelap sedikit saat hover */
+  color: #FFFBE1;
+}
+
+.main-color {
+  color: #2B321B !important;
+}
+
+/* Bannner CSS */
+.banner {
+  position: relative;
+  height: 90vh; /* tinggi banner */
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* inilah kunci agar video isi penuh */
+  z-index: 1;
+}
+
+.konten-banner {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding-top: 30vh; /* agar kontennya tidak ke bawah banget */
+}
+
+
+/* Menu CSS */
+.scrolling-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #CCCCCC transparent;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrolling-wrapper::-webkit-scrollbar-thumb {
+  background-color: #FFFBE1;
+  border-radius: 10px;
+}
+
+/* Promo CSS*/
+.wrapper-promo {
+  background-color: #2B321B;
+  /* Hijau tua */
+  width: 100%;
+}
+
+.wrapper-promo {
+  background-color: #2B321B;
+}
+
+
+.promo-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.promo-title {
+  font-size: 32px;
+  font-weight: 400;
+  color: #FFFBE1;
+  font-weight: bold;
+}
+
+.promo-subtitle {
+  font-size: 18px;
+  color: #FFFBE1;
+}
+
+.promo-card {
+  height: 100%;
+  border-radius: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bg-promo-1 {
+  background: linear-gradient(to bottom right, #DDA15E, #FEFAE0);
+}
+
+.bg-promo-2 {
+  background: linear-gradient(to bottom right, #A3A380, #E9EDC9);
+}
+
+.promo-discount {
+  font-size: 24px;
+  color: #2B321B;
+}
+
+.promo-discount .number {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2B321B;
+  text-shadow: 1px 1px #c7c7c7;
+}
+
+.promo-discount .percent {
+  color: #2B321B;
+  font-size: 24px;
+  vertical-align: top;
+}
+
+
+/* contact person*/
+.contact-color {
+  color: #2B321B !important;
+}
+
+/*Tulisan berjalan*/
+.top-marquee {
+  background-color: #CCD5AE;
+  color: #2B321B;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 8px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -1,0 +1,135 @@
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: #333333 !important;
+  background-color: #FFFBE1;
+  padding: 10px;
+}
+
+/* Atur warna teks dan background nav-pills */
+.nav-pills .nav-link {
+  color: #000000;
+  /* warna teks hitam */
+  background-color: #FFFBE1;
+  /* default background putih */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #2B321B;
+  /* warna hijau gelap untuk tombol aktif */
+  color: #FFFBE1;
+  /* teks putih biar kontras */
+}
+
+/* Hover effect optional */
+.nav-pills .nav-link:hover {
+  background-color: #2B321B;
+  /* lebih gelap sedikit saat hover */
+  color: #FFFBE1;
+}
+
+.main-color {
+  color: #2B321B !important;
+}
+
+.contact-title-wrapper {
+  position: relative;
+  z-index: 2; /* di atas overlay */
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+
+
+/* Form Section*/
+.form-section {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.form-bg {
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Layer overlay putih (semi transparan) */
+.form-bg .overlay {
+position: absolute;
+inset: 0;
+background-color: rgba(255, 255, 255, 0.85); /* Putih transparan */
+z-index: 0;
+}
+
+/* Pastikan semua isi kontennya di atas layer */
+.form-bg .content-wrapper {
+position: relative;
+z-index: 1;
+}
+
+
+/* Form dan teks tetap di atas */
+.form-section form,
+.form-section h2,
+.form-section .summary-box {
+  position: relative;
+  z-index: 1;
+}  
+
+.btn-order {
+  background-color: #606C38;
+  color: white;
+  border: navajowhite;
+}
+.btn-order:hover {
+  background-color: #283618;
+  color: white;
+}
+.summary-box {
+  background-color: #f0eee8;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+}
+
+
+/* contact person*/
+.contact-color {
+  color: #2B321B !important;
+}
+
+/*Tulisan berjalan*/
+.top-marquee {
+  background-color: #CCD5AE;
+  color: #2B321B;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 8px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

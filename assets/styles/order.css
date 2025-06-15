@@ -1,0 +1,80 @@
+body {
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  color: #333333 !important;
+  background-color: #FFFBE1;
+  padding: 10px;
+}
+
+/* Atur warna teks dan background nav-pills */
+.nav-pills .nav-link {
+  color: #000000;
+  /* warna teks hitam */
+  background-color: #FFFBE1;
+  /* default background putih */
+}
+
+.nav-pills .nav-link.active {
+  background-color: #2B321B;
+  /* warna hijau gelap untuk tombol aktif */
+  color: #FFFBE1;
+  /* teks putih biar kontras */
+}
+
+/* Hover effect optional */
+.nav-pills .nav-link:hover {
+  background-color: #2B321B;
+  /* lebih gelap sedikit saat hover */
+  color: #FFFBE1;
+}
+
+.main-color {
+  color: #2B321B !important;
+}
+
+/* Tambahan: Teks subjudul kiri bawah */
+.sub-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-top: 100px;
+  margin-left: 50px;
+  color: #2B321B;
+}
+
+.custom-card {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(43, 50, 27, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.custom-card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-top {
+  object-fit: cover;
+}
+
+.row-spacing {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.btn-tambah {
+  background-color: transparent;
+  border: 1.5px solid #2B321B;
+  color: #2B321B;
+  border-radius: 8px;
+  padding: 6px 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-tambah:hover {
+  background-color: #2B321B;
+  color: #FFFBE1;
+}
+
+

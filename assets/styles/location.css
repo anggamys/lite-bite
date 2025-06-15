@@ -1,0 +1,290 @@
+body {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #333333 !important;
+    background-color: #FFFBE1;
+    padding: 10px;
+}
+
+/* Atur warna teks dan background nav-pills */
+.nav-pills .nav-link {
+    color: #000000;
+    /* warna teks hitam */
+    background-color: #FFFBE1;
+    /* default background putih */
+}
+
+.nav-pills .nav-link.active {
+    background-color: #2B321B;
+    /* warna hijau gelap untuk tombol aktif */
+    color: #FFFBE1;
+    /* teks putih biar kontras */
+}
+
+/* Hover effect optional */
+.nav-pills .nav-link:hover {
+    background-color: #2B321B;
+    /* lebih gelap sedikit saat hover */
+    color: #FFFBE1;
+}
+
+.main-color {
+    color: #2B321B !important;
+}
+
+
+/* Judul besarrr dan kota */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.script-text {
+    font-family: 'Pacifico', cursive;
+    color: #517401;
+    /* hijau gelap */
+    font-size: 3.5rem;
+}
+
+.title-text {
+    color: #517401;
+}
+
+.location-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #1f1f1f;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+/* PERBAIKAN: Style untuk link lokasi dengan selector yang lebih spesifik */
+.location-list a.location-link {
+    color: black !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+.location-list a.location-link:hover {
+    color: #4d7c0f !important; /* Warna hijau saat hover */
+    text-decoration: underline !important;
+}
+
+/* lokasi*/
+.bg-leaf {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.5;
+    max-width: 300px;
+}
+
+.top-left {
+    top: -50px;
+    left: -50px;
+}
+
+.top-right {
+    top: -30px;
+    right: -30px;
+}
+
+.location-area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* lapisan putih transparan */
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.location-area {
+    background-image: url('../images/loc1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fdfdf4;
+    padding: 4rem 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bg-decor {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 220px;
+    opacity: 0.12;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.location-area>*:not(.bg-decor) {
+    position: relative;
+    z-index: 1;
+}
+
+.location-area-2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* lapisan putih transparan */
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.location-area-2 {
+    background-image: url('../images/loc2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fdfdf4;
+    padding: 4rem 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.location-area-2>*:not(.bg-decor) {
+    position: relative;
+    z-index: 1;
+}
+
+.location-area-3::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* lapisan putih transparan */
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.location-area-3 {
+    background-image: url('../images/loc3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fdfdf4;
+    padding: 4rem 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.location-area-3>*:not(.bg-decor) {
+    position: relative;
+    z-index: 1;
+}
+
+.location-area-4::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* lapisan putih transparan */
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.location-area-4 {
+    background-image: url('../images/loc4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fdfdf4;
+    padding: 4rem 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.location-area-4>*:not(.bg-decor) {
+    position: relative;
+    z-index: 1;
+}
+
+.location-area-5::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* lapisan putih transparan */
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.location-area-5 {
+    background-image: url('../images/loc5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #fdfdf4;
+    padding: 4rem 2rem;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.location-area-5>*:not(.bg-decor) {
+    position: relative;
+    z-index: 1;
+}
+
+.location-card {
+    background-color: #fffef7;
+    border: 2px solid #517401;
+    border-radius: 20px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-5px);
+}
+
+.location-card h5 {
+    color: #517401 !important;
+}
+
+.location-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #1f1f1f;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-custom {
+    background-color: #517401;
+    /* Warna latar seperti pada gambar */
+    color: #E9E9E6;
+    /* Warna teks putih */
+    border: 1px solid #3e4032;
+    /* Border hijau gelap */
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #dcdcd6;
+    /* Warna sedikit lebih gelap saat hover */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: #2e3025;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.main-color {
+    color: #517401 !important;
+}
