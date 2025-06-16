@@ -26,8 +26,8 @@ $menu_items = $mysqli->query($query);
       style="z-index: 0; opacity: 0.45;" />
 
     <div class="hero-content position-relative z-1 text-white text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 400px; padding: 2rem;">
-      <h1 class="fw-bold display-4">Welcome to Lite Bite</h1>
-      <p class="lead">Where freshness meets flavor every day</p>
+      <h1 class="fw-bold display-4 font-color #2b321b">Welcome to Lite Bite</h1>
+      <p class="lead font-color #2b321b">Where freshness meets flavor every day</p>
     </div>
   </section>
 
@@ -39,7 +39,7 @@ $menu_items = $mysqli->query($query);
       <?php if ($menu_items->num_rows > 0): ?>
         <div class="scrolling-wrapper px-2">
           <?php while ($item = $menu_items->fetch_assoc()): ?>
-            <div class="menu-card bg-white shadow-sm" style="min-width: 300px;">
+            <div class="menu-card bg-color #fffbe1 shadow-sm" style="min-width: 300px;">
               <div class="text-center p-3">
                 <img src="<?= htmlspecialchars($item['image_url']) ?>" 
                      alt="Picture of <?= htmlspecialchars($item['name']) ?>"
