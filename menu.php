@@ -32,7 +32,7 @@ function renderMenuSection($mysqli, $categoryLabel, $categoryKey, $icon)
                                 alt='" . htmlspecialchars($item['name']) . "'>
                         </div>
                         <div class='card-body d-flex flex-column'>
-                            <h5 class='card-title text-primary fw-semibold'>" . htmlspecialchars($item['name']) . "</h5>
+                            <h5 class='card-title fw-semibold' style='color: #2B321B;'>" . htmlspecialchars($item['name']) . "</h5>
                             <p class='card-text flex-grow-1 text-muted small'>" . nl2br(htmlspecialchars($item['description'])) . "</p>
                             <div class='text-muted small mb-2'>
                                 Carb: {$item['carb']}g | Protein: {$item['protein']}g | Fat: {$item['fat']}g
