@@ -28,6 +28,12 @@ h2.section-title {
   margin-bottom: 2rem;
 }
 
+.navbar-brand, .logo {
+  font-family: var(--litebite-font);
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
 /* ========== Banner ========== */
 .banner,
 .banner2 {
@@ -67,10 +73,16 @@ h2.section-title {
 /* ========== Scrolling Cards ========== */
 .scrolling-wrapper {
   display: flex;
-  overflow-x: auto;
   gap: 1.5rem;
+  overflow-x: auto;
+  padding: 2rem 1.5rem;
+  background-color: #fdfaf3;
+  border-radius: 16px;
   scroll-behavior: smooth;
-  padding-bottom: 1rem;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -123,6 +135,12 @@ h2.section-title {
 .btn-order:hover {
   background-color: #6b774c;
   transform: scale(1.05);
+}
+
+.btn-custom {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 30px;
 }
 
 /* ========== Location Section ========== */
@@ -314,6 +332,7 @@ h2.section-title {
   }
 }
 
+/* ========== Menu Cards ========== */
 .menu-card {
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -329,27 +348,6 @@ h2.section-title {
   width: 100%;
   height: auto;
   object-fit: cover;
-}
-
-.scrolling-wrapper {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding: 2rem 1.5rem;
-  background-color: #fefdf7;
-  border-radius: 16px;
-}
-
-.scrolling-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-.btn-custom {
-  background-color: #2B321B;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-weight: bold;
-  border-radius: 30px;
 }
 
 .menu-title {

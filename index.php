@@ -13,7 +13,7 @@ $menu_items = $mysqli->query($query);
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="assets/styles/litebite_combined.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet" />
 </head>
 
 <body>
@@ -32,7 +32,7 @@ $menu_items = $mysqli->query($query);
   </section>
 
   <!-- Menu Section -->
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light" id="menu">
     <div class="container">
       <h2 class="text-center mb-5 menu-title">OUR MENU</h2>
 
@@ -41,9 +41,13 @@ $menu_items = $mysqli->query($query);
           <?php while ($item = $menu_items->fetch_assoc()): ?>
             <div class="menu-card bg-white shadow-sm" style="min-width: 300px;">
               <div class="text-center p-3">
-                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="rounded-circle" style="width: 220px; height: 220px; object-fit: cover;">
+                <img src="<?= htmlspecialchars($item['image_url']) ?>" 
+                     alt="Picture of <?= htmlspecialchars($item['name']) ?>"
+                     class="rounded-circle" 
+                     style="width: 220px; height: 220px; object-fit: cover;"
+                     onerror="this.src='assets/images/default-menu.jpg';">
               </div>
-              <div class="p-4 text-center d-flex flex-column justify-content-between" style="min-height: 200px;">
+              <div class="p-4 text-center d-flex flex-column justify-content-start" style="min-height: 180px;">
                 <h5 class="fw-bold" style="color: #2B321B;"><?= htmlspecialchars($item['name']) ?></h5>
                 <p class="menu-description"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
               </div>
