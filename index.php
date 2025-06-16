@@ -22,7 +22,7 @@ $menu_items = $mysqli->query($query);
   <section class="hero-banner position-relative overflow-hidden">
     <img src="assets/images/aboutus2.png" alt="Banner Image"
       class="w-100 h-100 object-fit-cover position-absolute top-0 start-0"
-      style="z-index: 0; opacity: 0.65;" />
+      style="z-index: 0; opacity: 0.45;" />
 
     <div class="hero-content position-relative z-1 text-white text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 400px; padding: 2rem;">
       <h1 class="fw-bold display-4">Welcome to Lite Bite</h1>
@@ -30,24 +30,21 @@ $menu_items = $mysqli->query($query);
     </div>
   </section>
 
-  <!-- Menu Cards -->
-  <section class="py-5">
+  <!-- Menu Section -->
+  <section class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-4">OUR MENU</h2>
+      <h2 class="text-center mb-5 menu-title">OUR MENU</h2>
 
       <?php if ($menu_items->num_rows > 0): ?>
-        <div class="scrolling-wrapper d-flex px-2 overflow-auto">
+        <div class="scrolling-wrapper px-2">
           <?php while ($item = $menu_items->fetch_assoc()): ?>
-            <div class="card mx-2 mb-4 shadow-sm border-0" style="min-width: 18rem; flex: 0 0 auto;">
-              <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px; overflow: hidden;">
-                <img src="<?= htmlspecialchars($item['image_url']) ?>"
-                  alt="<?= htmlspecialchars($item['name']) ?>"
-                  class="img-fluid"
-                  style="max-height: 100%; max-width: 100%; object-fit: contain;">
+            <div class="menu-card bg-white shadow-sm" style="min-width: 300px;">
+              <div class="text-center p-3">
+                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" class="rounded-circle" style="width: 220px; height: 220px; object-fit: cover;">
               </div>
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title fw-semibold text-primary"><?= htmlspecialchars($item['name']) ?></h5>
-                <p class="card-text text-muted small flex-grow-1"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
+              <div class="p-4 text-center d-flex flex-column justify-content-between" style="min-height: 200px;">
+                <h5 class="fw-bold" style="color: #2B321B;"><?= htmlspecialchars($item['name']) ?></h5>
+                <p class="menu-description"><?= nl2br(htmlspecialchars($item['description'])) ?></p>
               </div>
             </div>
           <?php endwhile; ?>
@@ -60,7 +57,7 @@ $menu_items = $mysqli->query($query);
         </div>
       <?php endif; ?>
 
-      <div class="text-center mt-4">
+      <div class="text-center mt-5">
         <a href="menu.php" class="btn btn-custom">VIEW ALL MENU</a>
       </div>
     </div>

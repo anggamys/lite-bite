@@ -237,6 +237,7 @@ h2.section-title {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -311,4 +312,51 @@ h2.section-title {
   .location-card {
     text-align: left;
   }
+}
+
+.menu-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+}
+
+.menu-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.btn-custom {
+  background-color: #2B321B;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border-radius: 30px;
+}
+
+.menu-title {
+  color: #2B321B;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.menu-description {
+  font-size: 0.95rem;
+  color: #555;
 }
