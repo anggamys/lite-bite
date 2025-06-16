@@ -2,7 +2,7 @@
 :root {
   --litebite-primary: #2b321b;
   --litebite-accent: #ccd5ae;
-  --litebite-font: 'Cooper Black', cursive;
+  --litebite-font: 'Cormorant Garamond', serif;
 }
 
 body {
@@ -335,7 +335,9 @@ h2.section-title {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
-  padding-bottom: 1rem;
+  padding: 2rem 1.5rem;
+  background-color: #fefdf7;
+  border-radius: 16px;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
