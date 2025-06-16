@@ -1,5 +1,5 @@
 <?php
-include_once '../../config/koneksi.php';
+include_once __DIR__ . '/../../config/koneksi.php';
 
 function getProductById($mysqli, $id)
 {
