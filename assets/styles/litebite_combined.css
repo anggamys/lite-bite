@@ -6,8 +6,8 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fefdf7;
+  font-family: 'Georgia', serif;
+  background-color: #fffbe1;
   color: var(--litebite-primary);
 }
 
@@ -76,7 +76,7 @@ h2.section-title {
   gap: 1.5rem;
   overflow-x: auto;
   padding: 2rem 1.5rem;
-  background-color: #fdfaf3;
+  background-color: #fffbe1;
   border-radius: 16px;
   scroll-behavior: smooth;
 }
