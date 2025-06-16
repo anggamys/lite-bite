@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             log_terminal($username, 'success', 'Login successful');
 
-            $redirect = ($user['role'] === 'admin') ? '../../admins/dashboard.php' : '../../index.php';
+            $redirect = ($user['role'] === 'admin') ? '../../admins/dashboard.php' : '../../users/dashboard.php';
             header("Location: $redirect");
             exit;
         } else {

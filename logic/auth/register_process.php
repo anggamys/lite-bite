@@ -41,7 +41,8 @@ $insert->bind_param("ssss", $username, $email, $password, $role);
 
 if ($insert->execute()) {
     $_SESSION['register_success'] = "Registration successful. You can now log in.";
-    header("Location: ../../index.php?success=1");
+    $redirect_url = isset($_SESSION['redirect_url']) ? $_SESSION['redirect_url'] : '../../login.php';
+    header("Location: $redirect_url?success=1");
 } else {
     $_SESSION['register_error'] = "Failed to register. Please try again.";
     header("Location: ../../register.php?error=1");
