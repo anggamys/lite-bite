@@ -1,44 +1,17 @@
 <?php
 include 'config/koneksi.php';
+include 'logic/order/validate_product.php';
+include 'logic/order/process_checkout.php';
 
-// Validate and fetch product
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-  die('Invalid product ID.');
+// Validate product ID
+$product_id = $_GET['id'] ?? null;
+$product = getProductById($mysqli, $product_id);
+if (!$product) {
+  die('Invalid or missing product.');
 }
 
-$product_id = (int) $_GET['id'];
-$stmt = $mysqli->prepare("SELECT * FROM menu_items WHERE id = ?");
-$stmt->bind_param("i", $product_id);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows === 0) {
-  die('Product not found.');
-}
-
-$product = $result->fetch_assoc();
-$stmt->close();
-
-$order_success = false;
-$customer_name = $phone = $notes = '';
-$quantity = 1;
-
-// Handle order submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $customer_name = trim($_POST['name']);
-  $phone = trim($_POST['phone']);
-  $notes = trim($_POST['notes']);
-  $quantity = max(1, (int) $_POST['quantity']);
-
-  $insert = $mysqli->prepare("INSERT INTO orders (product_id, customer_name, phone, quantity, notes) VALUES (?, ?, ?, ?, ?)");
-  $insert->bind_param("issis", $product_id, $customer_name, $phone, $quantity, $notes);
-
-  if ($insert->execute()) {
-    $order_success = true;
-  }
-
-  $insert->close();
-}
+// Handle submission
+$orderData = processOrder($mysqli, $product['id']);
 ?>
 
 <!DOCTYPE html>
@@ -59,11 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-lg-9">
-
-        <?php if ($order_success): ?>
+        <?php if ($orderData['success']): ?>
           <div class="alert alert-success text-center shadow-sm">
-            <h4 class="mb-3">Thank you, <?= htmlspecialchars($customer_name) ?>!</h4>
-            <p>Your order for <strong><?= $quantity ?></strong> x <strong><?= htmlspecialchars($product['name']) ?></strong> has been placed.</p>
+            <h4 class="mb-3">Thank you, <?= htmlspecialchars($orderData['data']['name']) ?>!</h4>
+            <p>Your order for <strong><?= $orderData['data']['quantity'] ?></strong> x <strong><?= htmlspecialchars($product['name']) ?></strong> has been placed.</p>
             <a href="menu.php" class="btn btn-outline-success mt-3">
               <i class="bi bi-arrow-left"></i> Back to Menu
             </a>
@@ -83,27 +55,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <div class="col-md-7 p-4">
                 <h4 class="text-success fw-bold mb-3"><?= htmlspecialchars($product['name']) ?></h4>
 
+                <?php if ($orderData['message']): ?>
+                  <div class="alert alert-danger"><?= $orderData['message'] ?></div>
+                <?php endif; ?>
+
                 <form method="POST" novalidate>
                   <div class="mb-3">
                     <label for="name" class="form-label">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-control" required value="<?= htmlspecialchars($customer_name) ?>">
+                    <input type="text" name="name" id="name" class="form-control" required value="<?= htmlspecialchars($orderData['data']['name']) ?>">
                   </div>
-
                   <div class="mb-3">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input type="text" id="phone" name="phone" class="form-control" required value="<?= htmlspecialchars($phone) ?>">
+                    <input type="text" name="phone" id="phone" class="form-control" required value="<?= htmlspecialchars($orderData['data']['phone']) ?>">
                   </div>
-
                   <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" value="<?= $quantity ?>" required>
+                    <input type="number" name="quantity" id="quantity" min="1" class="form-control" required value="<?= $orderData['data']['quantity'] ?>">
                   </div>
-
                   <div class="mb-3">
                     <label for="notes" class="form-label">Additional Notes</label>
-                    <textarea id="notes" name="notes" class="form-control" rows="3"><?= htmlspecialchars($notes) ?></textarea>
+                    <textarea name="notes" id="notes" class="form-control" rows="3"><?= htmlspecialchars($orderData['data']['notes']) ?></textarea>
                   </div>
-
                   <button type="submit" class="btn btn-custom w-100">
                     <i class="bi bi-cart-fill me-2"></i>Confirm Order
                   </button>
@@ -112,7 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
           </div>
         <?php endif; ?>
-
       </div>
     </div>
   </div>
