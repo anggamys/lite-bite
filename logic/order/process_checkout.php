@@ -1,34 +1,38 @@
 <?php
-function processOrder(mysqli $mysqli, int $productId): array
+function processOrder(mysqli $mysqli, int $productId, array $user = []): array
 {
     $data = [
-        'name' => '',
-        'phone' => '',
+        'name' => $user['username'] ?? '',
+        'phone' => $user['email'] ?? '',
         'quantity' => 1,
         'notes' => '',
     ];
+
     $success = false;
     $message = '';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Sanitize & trim input
-        $data['name'] = trim($_POST['name'] ?? '');
-        $data['phone'] = trim($_POST['phone'] ?? '');
         $data['quantity'] = max(1, (int) ($_POST['quantity'] ?? 1));
         $data['notes'] = trim($_POST['notes'] ?? '');
 
-        // Validate input
-        if (empty($data['name']) || empty($data['phone']) || $data['quantity'] < 1) {
-            $message = 'Please fill in all required fields.';
+        // Ensure user is logged in
+        if (empty($user['id']) || empty($data['name']) || empty($data['phone'])) {
+            $message = 'You must be logged in to place an order.';
         } else {
-            // Insert into DB
-            $stmt = $mysqli->prepare("INSERT INTO orders (product_id, customer_name, phone, quantity, notes) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("issis", $productId, $data['name'], $data['phone'], $data['quantity'], $data['notes']);
+            // Save to cart table
+            $stmt = $mysqli->prepare("
+                INSERT INTO cart (user_id, product_id, quantity, notes)
+                VALUES (?, ?, ?, ?)
+            ");
+            $stmt->bind_param("iiis", $user['id'], $productId, $data['quantity'], $data['notes']);
+
             if ($stmt->execute()) {
                 $success = true;
             } else {
-                $message = 'Failed to place order. Please try again.';
+                $message = 'Failed to add to cart. Please try again.';
             }
+
             $stmt->close();
         }
     }
@@ -36,6 +40,11 @@ function processOrder(mysqli $mysqli, int $productId): array
     return [
         'success' => $success,
         'message' => $message,
-        'data' => $data
+        'data' => [
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'quantity' => $data['quantity'],
+            'notes' => $data['notes']
+        ]
     ];
 }

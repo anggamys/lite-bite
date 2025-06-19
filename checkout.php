@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'config/koneksi.php';
 include 'logic/order/validate_product.php';
 include 'logic/order/process_checkout.php';
@@ -10,10 +11,19 @@ if (!$product) {
   die('Invalid or missing product.');
 }
 
-// Handle submission
-$orderData = processOrder($mysqli, $product['id']);
-?>
+// Ensure user is logged in
+if (!isset($_SESSION['user'])) {
+  header('Location: login.php');
+  exit;
+}
 
+$loggedUser = $_SESSION['user'];
+$nameFromSession = $loggedUser['username'];
+$phoneFromSession = $loggedUser['email']; // assuming using email as placeholder for phone if not stored separately
+
+// Handle form submission
+$orderData = processOrder($mysqli, $product['id'], $loggedUser);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,19 +72,19 @@ $orderData = processOrder($mysqli, $product['id']);
                 <form method="POST" novalidate>
                   <div class="mb-3">
                     <label for="name" class="form-label">Your Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required value="<?= htmlspecialchars($orderData['data']['name']) ?>">
+                    <input type="text" name="name" id="name" class="form-control" required value="<?= htmlspecialchars($orderData['data']['username'] ?? $nameFromSession) ?>" readonly>
                   </div>
                   <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="text" name="phone" id="phone" class="form-control" required value="<?= htmlspecialchars($orderData['data']['phone']) ?>">
+                    <label for="phone" class="form-label">Phone / Email</label>
+                    <input type="text" name="phone" id="phone" class="form-control" required value="<?= htmlspecialchars($orderData['data']['email'] ?? $phoneFromSession) ?>" readonly>
                   </div>
                   <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
-                    <input type="number" name="quantity" id="quantity" min="1" class="form-control" required value="<?= $orderData['data']['quantity'] ?>">
+                    <input type="number" name="quantity" id="quantity" min="1" class="form-control" required value="<?= $orderData['data']['quantity'] ?? 1 ?>">
                   </div>
                   <div class="mb-3">
                     <label for="notes" class="form-label">Additional Notes</label>
-                    <textarea name="notes" id="notes" class="form-control" rows="3"><?= htmlspecialchars($orderData['data']['notes']) ?></textarea>
+                    <textarea name="notes" id="notes" class="form-control" rows="3"><?= htmlspecialchars($orderData['data']['notes'] ?? '') ?></textarea>
                   </div>
                   <button type="submit" class="btn btn-custom w-100">
                     <i class="bi bi-cart-fill me-2"></i>Confirm Order

@@ -2,23 +2,22 @@
 session_start();
 include '../config/koneksi.php';
 
-// Ensure user is logged in
+// Ensure user is logged in and is a regular user
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
     header("Location: ../login.php");
     exit;
 }
 
-$userName = $_SESSION['user']['name'];
+$userId = $_SESSION['user']['id'];
 
-// Fetch user's orders
 $stmt = $mysqli->prepare("
     SELECT o.*, m.name AS product_name, m.image_url 
     FROM orders o 
     JOIN menu_items m ON o.product_id = m.id 
-    WHERE o.customer_name = ?
+    WHERE o.user_id = ?
     ORDER BY o.created_at DESC
 ");
-$stmt->bind_param("s", $userName);
+$stmt->bind_param("i", $userId);
 $stmt->execute();
 $orders = $stmt->get_result();
 $stmt->close();
@@ -71,12 +70,13 @@ $pageTitle = "My Orders";
                                         <td><?= $order['id'] ?></td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="../<?= htmlspecialchars($order['image_url']) ?>" alt="Product" width="50" class="mr-2">
-                                                <?= htmlspecialchars($order['product_name']) ?>
+                                                <img src="<?= htmlspecialchars('../' . $order['image_url'] ?? 'assets/images/default.png') ?>"
+                                                    alt="Product Image" width="50" class="mr-2 rounded shadow-sm">
+                                                <span><?= htmlspecialchars($order['product_name']) ?></span>
                                             </div>
                                         </td>
-                                        <td><?= $order['quantity'] ?></td>
-                                        <td><?= nl2br(htmlspecialchars($order['notes'])) ?></td>
+                                        <td><?= (int) $order['quantity'] ?></td>
+                                        <td><?= nl2br(htmlspecialchars($order['notes'] ?? '-')) ?></td>
                                         <td><?= date('d M Y, H:i', strtotime($order['created_at'])) ?></td>
                                     </tr>
                                 <?php endwhile; ?>
@@ -84,14 +84,14 @@ $pageTitle = "My Orders";
                         </table>
                     </div>
                 <?php else: ?>
-                    <div class="alert alert-info text-center">You haven't placed any orders yet.</div>
+                    <div class="alert alert-info text-center">You haven’t placed any orders yet. <a href="../menu.php">Browse Menu</a></div>
                 <?php endif; ?>
             </div>
         </div>
 
         <!-- Footer -->
         <footer class="main-footer text-center">
-            <strong>&copy; <?= date('Y') ?> Lite Bite</strong> — All rights reserved.
+            <strong>&copy; <?= date('Y') ?> Lite Bite.</strong> All rights reserved.
         </footer>
     </div>
 
